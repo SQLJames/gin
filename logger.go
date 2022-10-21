@@ -167,10 +167,10 @@ func ErrorLogger() HandlerFunc {
 }
 
 // ErrorLoggerT returns a HandlerFunc for a given error type.
-func ErrorLoggerT(typ ErrorType) HandlerFunc {
+func ErrorLoggerT(type ErrorType) HandlerFunc {
 	return func(c *Context) {
 		c.Next()
-		errors := c.Errors.ByType(typ)
+		errors := c.Errors.ByType(type)
 		if len(errors) > 0 {
 			c.JSON(-1, errors)
 		}
