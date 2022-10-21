@@ -97,16 +97,16 @@ func (msg *Error) Unwrap() error {
 
 // ByType returns a readonly copy filtered the byte.
 // ie ByType(gin.ErrorTypePublic) returns a slice of errors with type=ErrorTypePublic.
-func (a errorMsgs) ByType(typ ErrorType) errorMsgs {
+func (a errorMsgs) ByType(errType ErrorType) errorMsgs {
 	if len(a) == 0 {
 		return nil
 	}
-	if typ == ErrorTypeAny {
+	if errType == ErrorTypeAny {
 		return a
 	}
 	var result errorMsgs
 	for _, msg := range a {
-		if msg.IsType(typ) {
+		if msg.IsType(errType) {
 			result = append(result, msg)
 		}
 	}
